@@ -5,3 +5,6 @@
 *.dll
 *.test
 *.out
+fileDownloader/*.mp3
+fileDownloader/*.mp4
+fileDownloader/*.avi
