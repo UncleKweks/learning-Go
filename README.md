@@ -10,7 +10,7 @@ A collection of small Go programs written while learning the language. Each mini
 - [bankAccountManagement](bankAccountManagement/main.go) — a bank account system demonstrating struct embedding and interfaces, with savings and overdraft account variants.
 - [payRollProcessor](payRollProcessor/main.go) — a payroll processor demonstrating interfaces and polymorphism across salaried, hourly, and commissioned employees.
 - [pingPonger](pingPonger/main.go) — a ping-pong goroutine exercise demonstrating channels, `select`, and `context` cancellation.
-- [fileDownloader](fileDownloader/main.go) — work in progress.
+- [fileDownloader](fileDownloader/main.go) — a concurrent file downloader demonstrating goroutines, channels, and `sync.WaitGroup` with a bounded worker limiter; downloads a list of URLs in parallel and reports size/duration per file.
 
 ## Requirements
 
@@ -25,4 +25,5 @@ go run ./saveMathLib
 go run ./bankAccountManagement
 go run ./payRollProcessor
 go run ./pingPonger
+go run ./fileDownloader
 ```
