@@ -65,6 +65,6 @@ func main() {
 			account.Withdraw(amount * 10)
 		}(i + 1)
 	}
-	//wg.Wait()
+	wg.Wait()
 	fmt.Println(account.Balance())
 }
