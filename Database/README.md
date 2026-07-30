@@ -7,7 +7,8 @@ A small exercise connecting to a SQLite database (via `modernc.org/sqlite`), dem
 - Creates a `users` table if it doesn't already exist.
 - Inserts four users, hashing each password with `bcrypt` before storing it.
 - Fetches a single user by email (`GetUserByEmail`) and prints it as JSON.
-- Fetches all users (`GetUsers`) and prints the full list as JSON.
+- Inserts an additional user using a prepared statement (`createUserWithPrepared`).
+- Fetches all users (`GetUsers`) and prints the full list as JSON (currently commented out).
 
 ## Running
 

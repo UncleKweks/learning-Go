@@ -48,6 +48,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println("Connected to database")
 
 	createTable(db)
 
@@ -86,16 +87,22 @@ func main() {
 	}
 	fmt.Println("User Kweks:", string(bs))
 
-	users, err := GetUsers(db)
+	_, err = createUserWithPrepared(db, "Kweks Okafor", "Kweks@gmai.com", "password", time.Now())
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	usersJSON, err := json.MarshalIndent(users, "", "  ")
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println("All Users:", string(usersJSON))
+	
+	//users, err := GetUsers(db)
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//
+	//usersJSON, err := json.MarshalIndent(users, "", "  ")
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//fmt.Println("All Users:", string(usersJSON))
 }
 
 func createTable(db *sql.DB) {
@@ -114,6 +121,25 @@ func createUserTable(db *sql.DB, name, email, hashedPassword string, createdAt t
 	}
 
 	result, err := db.Exec(statement, name, email, string(hp), createdAt)
+	if err != nil {
+		return 0, err
+	}
+	return result.LastInsertId()
+}
+
+func createUserWithPrepared(db *sql.DB, name, email, hashedPassword string, createdAt time.Time) (int64, error) {
+	stmt, err := db.Prepare(`INSERT INTO users (name, email, hashed_password, created_at) VALUES (?, ?, ?, ?)`)
+	if err != nil {
+		return 0, err
+	}
+	defer stmt.Close()
+
+	hp, err := bcrypt.GenerateFromPassword([]byte(hashedPassword), bcrypt.DefaultCost)
+	if err != nil {
+		return 0, err
+	}
+
+	result, err := stmt.Exec(name, email, string(hp), createdAt)
 	if err != nil {
 		return 0, err
 	}
