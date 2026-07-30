@@ -8,3 +8,5 @@
 fileDownloader/*.mp3
 fileDownloader/*.mp4
 fileDownloader/*.avi
+*.db
+*.sqlite
