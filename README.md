@@ -13,6 +13,7 @@ A collection of small Go programs written while learning the language. Each mini
 - [fileDownloader](fileDownloader/main.go) — a concurrent file downloader demonstrating goroutines, channels, and `sync.WaitGroup` with a bounded worker limiter; downloads a list of URLs in parallel and reports size/duration per file.
 - [bankAccount](bankAccount/main.go) — a thread-safe bank account demonstrating `sync.Mutex` and `sync.WaitGroup`; concurrent goroutines withdraw from a shared balance without racing.
 - [Database](Database/connectingToDataBase.go) — a SQLite exercise demonstrating `database/sql`, `bcrypt` password hashing, and querying a single record vs. all records.
+- [DataBase_2](DataBase_2/main.go) — a SQLite exercise built around the repository pattern: a `UserRepository` interface, a sqlite-backed implementation, transactional user+profile creation, and dependency injection wired up in `main`.
 
 ## Requirements
 
@@ -30,4 +31,5 @@ go run ./pingPonger
 go run ./fileDownloader
 go run ./bankAccount
 go run ./Database
+go run ./DataBase_2
 ```
