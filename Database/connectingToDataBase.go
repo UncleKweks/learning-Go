@@ -92,7 +92,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	
 	//users, err := GetUsers(db)
 	//if err != nil {
 	//	log.Fatal(err)
