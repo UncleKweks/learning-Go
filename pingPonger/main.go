@@ -49,14 +49,8 @@ func main() {
 			select{
 			case <-timeout:
 				fmt.Println("operation completed")
-				close(pingerCh)
-				done <- struct{}{}
-				return
-			case msg := <-pingerCh:
-				fmt.Println(msg)
-			case msg := <-pingerCh:
-				fmt.Println(msg)
 				close(done)
+				return
 			case msg := <-pingerCh:
 				fmt.Println(msg)
 			}
